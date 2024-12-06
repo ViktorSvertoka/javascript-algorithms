@@ -17,39 +17,6 @@ const monsterStats = document.querySelector('#monsterStats');
 const monsterName = document.querySelector('#monsterName');
 const monsterHealthText = document.querySelector('#monsterHealth');
 
-function goCave() {
-  console.log('Going to cave.');
-}
-
-function fightDragon() {
-  console.log('Fighting dragon.');
-}
-
-// initialize buttons
-
-button1.onclick = goStore;
-button2.onclick = goCave;
-button3.onclick = fightDragon;
-
-function buyHealth() {}
-
-function buyWeapon() {}
-
-function update(location) {
-  button1.innerText = 'Go to store';
-  button2.innerText = 'Go to cave';
-  button3.innerText = 'Fight dragon';
-  button1.onclick = goStore;
-  button2.onclick = goCave;
-  button3.onclick = fightDragon;
-  text.innerText =
-    'You are in the town square. You see a sign that says "Store".';
-}
-
-function goTown() {}
-
-function goStore() {}
-
 const location = [
   {
     name: 'town square',
@@ -67,4 +34,50 @@ const location = [
     'button functions': [buyHealth, buyWeapon, goTown],
     text: 'You enter the store.',
   },
+  {
+    name: 'cave',
+    'button text': ['Fight slime', 'Fight fanged beast', 'Go to town square'],
+    'button functions': [fightSlime, fightBeast, goTown],
+    text: 'You enter the cave. You see some monsters.',
+  },
 ];
+
+// initialize buttons
+
+button1.onclick = goStore;
+button2.onclick = goCave;
+button3.onclick = fightDragon;
+
+function update(location) {
+  button1.innerText = location['button text'][0];
+  button2.innerText = location['button text'][1];
+  button3.innerText = location['button text'][2];
+  button1.onclick = location['button functions'][0];
+  button2.onclick = location['button functions'][1];
+  button3.onclick = location['button functions'][2];
+  text.innerText = location.text;
+}
+
+function goTown() {
+  update(locations[0]);
+}
+
+function goStore() {
+  update(locations[1]);
+}
+
+function goCave() {
+  console.log('Going to cave.');
+}
+
+function fightDragon() {
+  console.log('Fighting dragon.');
+}
+
+function buyHealth() {}
+
+function buyWeapon() {}
+
+function fightSlime() {}
+
+function fightBeast() {}
