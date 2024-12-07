@@ -42,8 +42,6 @@ const location = [
   },
 ];
 
-// initialize buttons
-
 button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = fightDragon;
@@ -67,14 +65,17 @@ function goStore() {
 }
 
 function goCave() {
-  console.log('Going to cave.');
+  update(locations[2]);
 }
 
 function fightDragon() {
   console.log('Fighting dragon.');
 }
 
-function buyHealth() {}
+function buyHealth() {
+  gold -= 10;
+  health += 10;
+}
 
 function buyWeapon() {}
 
